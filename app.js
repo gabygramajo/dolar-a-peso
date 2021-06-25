@@ -17,7 +17,7 @@ const updateTable = () => {
     const dolar = 95.47; // 24/6/2021
     const retencion = .35;
     const impuestoPais = .3;
-    let cantidad = (quality.value.trim() === "") ? quality.value = 1 : quality.value; // si la cantidad esta vacia retorna 1 
+    let cantidad = (quality.value.trim() === "") ? 1 : quality.value; // si la cantidad esta vacia retorna 1 
     let price = prices.value * cantidad;
     let impuestos = (price * retencion) + (price * impuestoPais); 
     let total = price + impuestos;
@@ -32,6 +32,8 @@ const updateTable = () => {
         Peso ARG: $${cast.toFixed(2)}
     </p>`;
     table.innerHTML = html; // introduce las operaciones en el html.
+    prices.value = "";
+    quality.value = "";
 }
 const getValues = () => { // se activa al darle click a btn de convertir.
     if (validateValues() ){ // valida los campos
