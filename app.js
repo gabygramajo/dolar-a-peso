@@ -4,7 +4,7 @@ let quality = document.getElementById('quantity');
 let table = document.getElementById('table');
 
 const validateValues = () => {
-    if(prices.value.length === 0 || quality.value.length === 0) // valida que los inputs no esten vacios
+    if(prices.value.length === 0 || quality.value === 0) // valida que el input del precio no esté vacio
         return false;
     if(isNaN(prices.value)  || isNaN(quality.value)) // valida que sean numeros
         return false;
@@ -14,17 +14,18 @@ const validateValues = () => {
 }
  
 const updateTable = () => {
-    const dolar = 73.16,
-    IVA = .3;
-    price = prices.value * quality.value;
-    let tax = price * IVA;
-    let total = price + tax;
+    const dolar = 95.47; // 24/6/2021
+    const IVA = .35;
+    let cantidad = (quality.value.trim() === "") ? quality.value = 1 : quality.value;
+    price = prices.value * cantidad;
+    let impuesto = price * IVA; 
+    let total = price + impuesto;
     let cast = total * dolar;
 
     let html = 
     `<p>
         Input: $${price}<br>
-        IVA: $${tax.toFixed(2)}<br>
+        IVA: $${impuesto.toFixed(2)}<br>
         Dollar: $${dolar}<br>
         Peso ARG: $${cast.toFixed(2)}
     </p>`;
@@ -34,7 +35,7 @@ const getValues = () => {
     if (validateValues() ){
         updateTable();
     } else {
-        alert('please, fill in correctly.');
+        alert('Por favor, complete correctamente.'); 
     }
 }
 
