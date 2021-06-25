@@ -15,17 +15,19 @@ const validateValues = () => {
  
 const updateTable = () => {
     const dolar = 95.47; // 24/6/2021
-    const IVA = .35;
+    const retencion = .35;
+    const impuestoPais = .3;
     let cantidad = (quality.value.trim() === "") ? quality.value = 1 : quality.value; // si la cantidad esta vacia retorna 1 
     let price = prices.value * cantidad;
-    let impuesto = price * IVA; 
-    let total = price + impuesto;
+    let impuestos = (price * retencion) + (price * impuestoPais); 
+    let total = price + impuestos;
     let cast = total * dolar;
 
     let html = 
     `<p>
         Entrada: $${price}<br>
-        IVA: $${impuesto.toFixed(2)}<br>
+        Retención: $${(price * retencion).toFixed(2)}<br>
+        Impuesto País: $${(price * impuestoPais).toFixed(2)}<br>
         Dolar: $${dolar}<br>
         Peso ARG: $${cast.toFixed(2)}
     </p>`;
