@@ -13,9 +13,9 @@ const validateValues = () => {
     return true; // si esta todo correcto.
 }
  
-const updateTable = () => {
+const updateTable = () => { 
     const dolar = 73.16,
-    IVA = .3;
+    IVA = .35;
     price = prices.value * quality.value;
     let tax = price * IVA;
     let total = price + tax;
@@ -23,18 +23,18 @@ const updateTable = () => {
 
     let html = 
     `<p>
-        Input: $${price}<br>
+        Entrada: $${price}<br>
         IVA: $${tax.toFixed(2)}<br>
-        Dollar: $${dolar}<br>
+        Dolar: $${dolar}<br>
         Peso ARG: $${cast.toFixed(2)}
     </p>`;
-    table.innerHTML = html;
+    table.innerHTML = html; // introduce las operaciones en el html.
 }
-const getValues = () => { 
-    if (validateValues() ){
-        updateTable();
+const getValues = () => { // se activa al darle click a btn de convertir.
+    if (validateValues() ){ // valida los campos
+        updateTable(); // si esta todo ok, ejecuta la conversión.
     } else {
-        alert('please, fill in correctly.');
+        alert('Por favor, complete correctamente.'); 
     }
 }
 
