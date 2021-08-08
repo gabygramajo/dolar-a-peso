@@ -4,25 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculate Price</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="container">
         <h1>Dolar a Peso</h1>
+
         <div class="data-entry">    
-            <label>Precio en dolar: </label> <input id="price-dolar" type="text" placeholder="ej: 20"> <br>
-            <label>Cantidad (opcional): </label> <input id="quantity" type="text" placeholder="1 por defecto.">
+
+            <label for="price-in-dolar">Precio en dolar: </label> 
+            <input id="price-in-dolar" name="price-dolar" type="number" min="0"
+            step="0.01" placeholder="ej: 9.99"> 
+
+            <label for="quantity">Cantidad (opcional): </label> 
+            <input id="quantity" name="quantity" type="number" min="0" step="1" placeholder="1 por defecto.">
+
+            <label for="dolar">Valor del dolar (opcional): </label> 
+            <input id="dolar" name="price-dolar" type="number" min="0"
+            step="0.01" placeholder="97.17 en 8/7/2021."> 
+
             <button id="btn-convert">Convertir</button>
+
         </div>
-        <hr>
-        <div id="table" class="result">
-            <p>
-                Entrada: $   <br>
-                Retención: $     <br>
-                Impuesto País: $   <br>
-                Dolar: $  <br>
-                Peso ARG: $
-            </p>
+
+        <div id="list-contain" class="result">
+            <ul>
+                <li>
+                    <span class="head-list">Dolar:</span> $
+                </li>
+                <li>
+                    <span class="head-list">Entrada:</span> $
+                </li>
+                <li>
+                    <span class="head-list">Retención:</span> $
+                </li>
+                <li>
+                    <span class="head-list">Impuesto País:</span> $
+                </li>
+                <li>
+                    <span class="head-list">Total USD a ARS:</span> $
+                </li>
+            </ul>
         </div>
     </div>
     <script src="./app.js"></script>

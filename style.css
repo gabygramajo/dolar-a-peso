@@ -5,39 +5,44 @@ html{
 
 } *, *:before, *:after {
     box-sizing: inherit;
+    margin: 0;
   }
   
 body{
+    height: 100%;
     background: #f3e6e3;
-    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+    /* background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%); */
+    background-color: #082032;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    min-height: 80vh;
+    min-height: 100vh;
 }
 .container{
     width: 500px;
-
-    padding: 30px;
-    border: 1px solid black;
-    border-radius: 10%;
-    background: #f7e7bd;
-    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    padding: 10px 30px;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    background-color: #F4DFD0;
     color: #fff;
-    text-shadow: 1px 1px 10px #000;
 }
 .container h1 {
-    color: #fff;
-    font-size: 4rem;
+    color: #082032;
     margin: 0 0 10px 0;
+    font-size: 4rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
     text-align: center;
     border-bottom: 1px solid #fff;
 }
+/* --------- Entrada de Datos ---------*/
 .data-entry{
     font-size: 3rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
     text-align: left;
+    color: #082032;
 }
 input{
     padding: 5px 0 5px 10px;
@@ -45,32 +50,93 @@ input{
     font-size: 2rem;
     height: 30px;
 }
+
 button{
-    margin-top: 10px;
-    font-size: 2rem;
-    font-weight: bold;
-    background: #fff;
-    width: 100%;
+    display: block;
+    margin: 10px auto;
+    width: 50%;
     height: 40px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    background: #082032;
+    color: #fff;
+    border: 1px solid #334756;
+    border-radius: 30px;
 }
-hr{
+button:active{
+    border: 1px solid #fff;
+}
+/* --------- Lista --------- */
+#list-contain ul {
+    list-style: none;
+    width: 100%;
     margin-top: 10px;
-}
-.result p {
-    margin: 0;
+    margin-bottom: 0;
     padding-left: 10px;
+    padding-top: 5px;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #2C394B;
+    border-top: 1px solid #fff;
+}
+#list-contain ul li {
+    margin-bottom: 3px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.head-list{
+    font-weight: 700;
     font-size: 3rem;
+    color: #082032;
+    /* align-self: flex-start; */
 }
-@media (max-width: 560px) {
-    html{ font-size: 9px;}
-    body{
-        justify-content: flex-start;
+.total-value{
+    width: 100%;
+    text-align: center;
+    color: #368B85;
+    font-size: 3rem;
+    font-weight: 700;
+}
+/* ---- responsive ---- */
+
+@media (max-width: 520px) {
+    .container h1 {
+        margin-top: 0;
+        margin-bottom: 0;
     }
-    .container{
-        width: 95%;
-        margin-top: 30px;
+   .container{
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 5px 20px;
+   }
+   label{
+        font-size: 2.5rem;
+   }
+   #list-contain ul{
+        margin-top: 0;
+   }
+   #list-contain ul li {
+        line-height: 1;
+    } 
+   .head-list{
+    font-size: 2.8rem;
+    }
+    .total-value{
+        font-size: 2.5rem;
+    }
+    #btn-convert{
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 }
-@media (max-width: 400px) {
-    /* html{ font-size: 6px;} */
+@media (max-width: 320px) {
+    #list-contain ul li {
+        font-size: 2.3rem;
+        line-height: 1;
+    } 
 }
