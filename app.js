@@ -13,9 +13,11 @@ const validateValues = () => {
         return false;
     return true; // si esta todo correcto.
 }
+
 // ------- calculadores -------
+
 const inputValue = () => {
-    const quality = (inputQuality.value.trim() === "") ? 1 : Number(inputQuality.value); // si la cantidad esta vacia retorna 1 
+    const quality = (inputQuality.value.trim() === "") ? 1 : parseInt(inputQuality.value); // si la cantidad esta vacia retorna 1 
 
     return  parseFloat((parseFloat(inputPrice.value) * quality).toFixed(2));
 }
