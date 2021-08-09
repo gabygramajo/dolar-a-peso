@@ -14,62 +14,62 @@ const validateValues = () => {
     return true; // si esta todo correcto.
 }
 // ------- calculadores -------
-const inputValue = (price, quality) => {
-    return  (price * quality).toFixed(2);
+const inputValue = () => {
+    const quality = (inputQuality.value.trim() === "") ? 1 : Number(inputQuality.value); // si la cantidad esta vacia retorna 1 
+
+    return  parseFloat((parseFloat(inputPrice.value) * quality).toFixed(2));
 }
 
-const calcularRentencion = (totalEntry,rentencion) => {
-    return parseFloat((totalEntry * rentencion).toFixed(2));
+const calcularRentencion = () => {
+    return parseFloat((inputValue() * .35).toFixed(2));
 }
 
-const calcularImpuestoPais = (totalEntry,impuestoPais) => {
-    return parseFloat((totalEntry * impuestoPais).toFixed(2));
+const calcularImpuestoPais = () => {
+    return parseFloat((inputValue() * .3).toFixed(2));
 }
 
-const totalPriceInUsd = (totalEntry, totalTax) => {
-    return (totalEntry + totalTax).toFixed(2);
+const totalPriceInUsd = () => {
+    const totalTax =  calcularRentencion(inputValue())
+                    + 
+                    calcularImpuestoPais(inputValue()); 
+    return (inputValue() + totalTax).toFixed(2);
 }
-const convertCurrency = (priceInUsd, dolar) => {
-    return (priceInUsd * dolar).toFixed(2);
+
+const convertCurrency = (priceInUsd) => {
+    return (priceInUsd * dollarValue()).toFixed(2);
+}
+
+const dollarValue = () => {
+    return (dolarCurrently.value === "" ) ? 97.17 : parseFloat(dolarCurrently.value);
 }
 
 const updateTable = () => {
-    const dolar = (dolarCurrently.value === "" ) ? 97.17 : parseFloat(dolarCurrently.value); // 8/7/2021
-    const retencion = .35;
-    const impuestoPais = .3;
-    const quality = (inputQuality.value.trim() === "") ? 1 : Number(inputQuality.value); // si la cantidad esta vacia retorna 1 
-    const totalEntry = parseFloat(inputPrice.value) * quality;
-    console.log(totalEntry);
-
-    const totalTax =  calcularRentencion(totalEntry, retencion)
-                    + 
-                    calcularImpuestoPais(totalEntry,impuestoPais); 
 
     const html = 
     ` <ul>
         <li>
-            <span class="head-list">Dolar:</span> $${dolar} ars.
+            <span class="head-list">Dolar:</span> $${dollarValue()} ars.
         </li>
         <li>
             <span class="head-list">Entrada:</span>
-            $${inputValue(inputPrice.value, quality)} usd = 
-            $${convertCurrency(inputValue(inputPrice.value, quality),dolar)} ars.
+            $${inputValue()} usd = 
+            $${convertCurrency(inputValue())} ars.
         </li>
         <li>
             <span class="head-list">Retención:</span> +
-            $${calcularRentencion(totalEntry, retencion)} usd = 
-            $${convertCurrency(calcularRentencion(totalEntry, retencion),dolar)} ars.
+            $${calcularRentencion()} usd = 
+            $${convertCurrency(calcularRentencion())} ars.
         </li>
         <li>
             <span class="head-list">Impuesto País:</span> + 
-            $${calcularImpuestoPais(totalEntry,impuestoPais)} usd = 
-            $${convertCurrency(calcularImpuestoPais(totalEntry,impuestoPais),dolar)} ars.
+            $${calcularImpuestoPais()} usd = 
+            $${convertCurrency(calcularImpuestoPais())} ars.
         </li>
         <li>
             <span class="head-list">Total USD a ARS:</span> 
             <span class="total-value">
-            $${totalPriceInUsd(totalEntry, totalTax)} usd =
-            $${convertCurrency(totalPriceInUsd(totalEntry, totalTax), dolar)} ars.
+            $${totalPriceInUsd()} usd =
+            $${convertCurrency(totalPriceInUsd())} ars.
             </span>
         </li>
     </ul>`;
